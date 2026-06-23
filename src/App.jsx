@@ -9,7 +9,7 @@ const PROJECTS = [
     title: "SQL Portfolio",
     desc: "A collection of SQL-driven business analyses on Google BigQuery. Covers two datasets — 124,838 e-commerce orders and a regional retail KPI analysis — moving from raw SQL through visualization to written business reports, including a profit-loss finding masked by revenue-only reporting.",
     tech: ["BigQuery", "SQL", "Google Sheets", "Google Docs"],
-    href: "https://github.com/a-chill/sql-portfolio",
+    href: "https://github.com/acheachi/sql-portfolio",
   },
 ];
 
@@ -350,7 +350,7 @@ export default function Portfolio() {
               <h1 className="hero-name">
                 John Achilles<br />Colon
               </h1>
-              <p className="hero-role">Aspiring Data Analyst</p>
+              <p className="hero-role">BSIT Graduate</p>
               <p className="hero-location">Iloilo, Philippines</p>
               <div className="hero-divider" />
               <div className="socials">
