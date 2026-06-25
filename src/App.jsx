@@ -13,6 +13,82 @@ const PROJECTS = [
   },
 ];
 
+const CERTIFICATIONS = [
+  {
+    id: 1,
+    title: "CCNA: Introduction to Networks",
+    issuer: "Cisco",
+    date: "Aug 2024",
+    badgeImg: "https://images.credly.com/images/70d71df5-f3dc-4380-9b9d-f22513a70417/linkedin_thumb_CCNAITN__1_.png",
+    verifyHref: "https://www.credly.com/badges/50cbc974-5883-40c5-9312-6afd56be34a5/public_url",
+  },
+  {
+    id: 2,
+    title: "CCNA: Switching, Routing, and Wireless Essentials",
+    issuer: "Cisco",
+    date: "Jan 2025",
+    badgeImg: "https://images.credly.com/images/f4ccdba9-dd65-4349-baad-8f05df116443/linkedin_thumb_CCNASRWE__1_.png",
+    verifyHref: "https://www.credly.com/badges/101f5da6-e0af-412e-9b51-24dbb1b1d92f/public_url",
+  },
+  {
+    id: 3,
+    title: "Introduction to Cybersecurity",
+    issuer: "Cisco",
+    date: "May 2025",
+    badgeImg: "https://images.credly.com/images/af8c6b4e-fc31-47c4-8dcb-eb7a2065dc5b/linkedin_thumb_I2CS__1_.png",
+    verifyHref: "https://www.credly.com/badges/215969d7-72b3-43c8-b894-d41b715995c1/public_url",
+  },
+  {
+    id: 4,
+    title: "Junior Cybersecurity Analyst Career Path",
+    issuer: "Cisco",
+    date: "Dec 2025",
+    badgeImg: "https://images.credly.com/images/441578ec-c0f3-46cc-95fc-86b27e90cf4f/linkedin_thumb_image.png",
+    verifyHref: "https://www.credly.com/badges/8a9d0aba-3ae6-4b95-8319-a8e488386486/public_url",
+  },
+  {
+    id: 5,
+    title: "Prompt Design in Vertex AI Skill Badge",
+    issuer: "Google Cloud",
+    date: "Jun 2025",
+    badgeImg: "https://images.credly.com/images/cef82b2e-970a-4318-8e59-c3e26b7f5c19/linkedin_thumb_image.png",
+    verifyHref: "https://www.credly.com/badges/ba1e167c-ee8d-4360-986b-68cff73fb0d4/public_url",
+  },
+];
+
+const WEBINARS = {
+  "Artificial Intelligence": [
+    { title: "Beyond the Black Box: Explainable AI in Game Development", date: "Oct 2025", file: "/certs/webinars/explainable-ai-game-dev.png" },
+    { title: "Shaping Tomorrow: Accelerating Economic Growth with AI", date: "Oct 2025", file: "/certs/webinars/ai-economic-growth.png" },
+    { title: "Generative AI and the Future of Content Creation", date: "Oct 2025", file: "/certs/webinars/generative-ai-content.png" },
+    { title: "AI in Governance: Promise and Ethical Issues", date: "Sept 2025", file: "/certs/webinars/ai-governance-ethics.png" },
+  ],
+  "Cybersecurity": [
+    { title: "DevSecOps: Integrating Security into the SDLC", date: "Oct 2025", file: "/certs/webinars/devsecops-sdlc.png" },
+    { title: "Shift-Left Security: Building Safer Pipelines with DevSecOps", date: "Oct 2025", file: "/certs/webinars/shift-left-security.png" },
+    { title: "Ctrl+Alt+Defend: Defending Critical Infrastructure from Cyber Threats", date: "Oct 2025", file: "/certs/webinars/ctrl-alt-defend.png" },
+    { title: "The Triple Shield: AI, Blockchain & Cybersecurity in Finance", date: "Sept 2025", file: "/certs/webinars/triple-shield-finance.png" },
+    { title: "Ethical Hacking and Cyber Security", date: "Sept 2023", file: "/certs/webinars/ethical-hacking-2023.pdf" },
+  ],
+  "Cloud & Emerging Tech": [
+    { title: "Cloud Migration Strategies for Enterprises", date: "Oct 2025", file: "/certs/webinars/cloud-migration.png" },
+    { title: "5G Technology and IoT: Transforming Connectivity for the Future", date: "Sept 2025", file: "/certs/webinars/5g-iot.png" },
+    { title: "Resilience Through Technology: IT Solutions for Disaster Risk Reduction", date: "Oct 2025", file: "/certs/webinars/it-disaster-risk.png" },
+  ],
+  "UX & Design": [
+    { title: "Human-Computer Interaction (HCI) and UX Beyond the Screen", date: "Oct 2025", file: "/certs/webinars/hci-ux.png" },
+    { title: "Design with Purpose: Usable and Accessible UX for the Future", date: "Sept 2025", file: "/certs/webinars/design-with-purpose.png" },
+  ],
+  "Creative & Multimedia": [
+    { title: "Visual Poetry: Creating Images That Speak", date: "Sept 2025", file: "/certs/webinars/visual-poetry.png" },
+    { title: "Anime In-Betweening Workflow: A Digital Approach Through Clip Studio Paint", date: "Sept 2025", file: "/certs/webinars/anime-inbetweening.png" },
+    { title: "Exploring the Fusion of Art and Technology in Multimedia Creation", date: "Sept 2023", file: "/certs/webinars/art-tech-fusion-2023.png" },
+  ],
+  "Project Management": [
+    { title: "Chaos to Clarity: Using PM Tools to Strengthen Leadership & Team Collaboration", date: "Oct 2025", file: "/certs/webinars/chaos-to-clarity-pm.png" },
+  ],
+};
+
 /* ─── ICONS ─────────────────────────────────────────────────────────────── */
 
 const GithubIcon = () => (
@@ -76,6 +152,88 @@ function ProjectCard({ p }) {
         style={{ fontFamily: "var(--mono)", fontSize: "0.68rem", color: hovered ? "var(--acc)" : "var(--tx3)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.35rem", transition: "color 0.2s", letterSpacing: "0.08em" }}>
         view source <ArrowIcon />
       </a>
+    </div>
+  );
+}
+
+/* ─── CERTIFICATION CARD ────────────────────────────────────────────────── */
+
+function CertCard({ c, isLast }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        padding: "1.25rem 1.5rem",
+        display: "flex",
+        gap: "1rem",
+        alignItems: "center",
+        background: hovered ? "rgba(145,168,130,0.04)" : "transparent",
+        transition: "background 0.3s ease",
+        borderBottom: isLast ? "none" : "1px solid var(--div)",
+      }}
+    >
+      <img
+        src={c.badgeImg}
+        alt={c.title}
+        style={{ width: "52px", height: "52px", objectFit: "contain", flexShrink: 0 }}
+      />
+      <div style={{ flex: 1 }}>
+        <h4 style={{ fontFamily: "var(--display)", fontSize: "1rem", fontWeight: 400, color: "var(--tx)", marginBottom: "0.25rem", lineHeight: 1.3 }}>
+          {c.title}
+        </h4>
+        <p style={{ fontFamily: "var(--mono)", fontSize: "0.63rem", color: "var(--tx3)", letterSpacing: "0.05em", marginBottom: "0.4rem" }}>
+          {c.issuer} · {c.date}
+        </p>
+        <a href={c.verifyHref} target="_blank" rel="noreferrer"
+          style={{ fontFamily: "var(--mono)", fontSize: "0.63rem", color: hovered ? "var(--acc)" : "var(--tx3)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.3rem", letterSpacing: "0.06em" }}>
+          verify <ArrowIcon />
+        </a>
+      </div>
+    </div>
+  );
+}
+
+/* ─── WEBINAR GROUP ─────────────────────────────────────────────────────── */
+
+function WebinarGroup({ theme, items }) {
+  return (
+    <div style={{ marginBottom: "2rem" }}>
+      <div style={{ fontFamily: "var(--mono)", fontSize: "0.68rem", color: "var(--acc)", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "0.75rem", paddingBottom: "0.5rem", borderBottom: "1px solid var(--div)" }}>
+        {theme} <span style={{ color: "var(--tx3)" }}>({items.length})</span>
+      </div>
+      {items.map((w, i) => (
+        <WebinarRow key={i} w={w} />
+      ))}
+    </div>
+  );
+}
+
+function WebinarRow({ w }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        display: "flex", justifyContent: "space-between", alignItems: "baseline",
+        gap: "1rem", padding: "0.55rem 0",
+        borderBottom: "1px solid rgba(145,168,130,0.06)",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "baseline", gap: "0.6rem", flex: 1 }}>
+        <span style={{ fontFamily: "var(--display)", fontSize: "0.92rem", fontWeight: 400, color: hovered ? "var(--tx)" : "var(--tx2)", transition: "color 0.2s" }}>
+          {w.title}
+        </span>
+      </div>
+      <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexShrink: 0 }}>
+        <span style={{ fontFamily: "var(--mono)", fontSize: "0.62rem", color: "var(--tx3)" }}>{w.date}</span>
+        <a href={w.file} target="_blank" rel="noreferrer"
+          style={{ fontFamily: "var(--mono)", fontSize: "0.62rem", color: hovered ? "var(--acc)" : "var(--tx3)", textDecoration: "none" }}>
+          view
+        </a>
+      </div>
     </div>
   );
 }
@@ -264,6 +422,11 @@ export default function Portfolio() {
           max-width: 560px;
         }
 
+        .certs-list {
+          border: 1px solid var(--div);
+          max-width: 640px;
+        }
+
         .resume-row {
           display: flex; justify-content: space-between;
           align-items: center; gap: 2rem; flex-wrap: wrap;
@@ -327,6 +490,7 @@ export default function Portfolio() {
           .section { padding: 4rem 0; }
           .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
           .projects-grid { max-width: 100%; }
+          .certs-list { max-width: 100%; }
           .resume-row { flex-direction: column; align-items: flex-start; }
         }
       `}</style>
@@ -335,7 +499,7 @@ export default function Portfolio() {
       <nav className={`nav${scrolled ? " scrolled" : ""}`}>
         <a className="nav-name" href="#home">John Achilles Colon</a>
         <ul className="nav-links">
-          {[["about", "#about"], ["projects", "#projects"], ["resume", "#resume"]].map(([l, h]) => (
+          {[["about", "#about"], ["projects", "#projects"], ["certifications", "#certifications"], ["webinars", "#webinars"], ["resume", "#resume"]].map(([l, h]) => (
             <li key={l}><a href={h}>{l}</a></li>
           ))}
         </ul>
@@ -423,6 +587,26 @@ export default function Portfolio() {
         <div id="projects" className="section">
           <div className="projects-grid">
             {PROJECTS.map(p => <ProjectCard key={p.id} p={p} />)}
+          </div>
+        </div>
+
+        {/* ── CERTIFICATIONS ─────────────────────────────────────── */}
+        <div id="certifications" className="section">
+          <div className="skills-heading" style={{ marginBottom: "1.5rem" }}>certifications &amp; badges</div>
+          <div className="certs-list">
+            {CERTIFICATIONS.map((c, i) => (
+              <CertCard key={c.id} c={c} isLast={i === CERTIFICATIONS.length - 1} />
+            ))}
+          </div>
+        </div>
+
+        {/* ── WEBINARS ───────────────────────────────────────────── */}
+        <div id="webinars" className="section">
+          <div className="skills-heading" style={{ marginBottom: "1.5rem" }}>webinars &amp; training</div>
+          <div style={{ maxWidth: "700px" }}>
+            {Object.entries(WEBINARS).map(([theme, items]) => (
+              <WebinarGroup key={theme} theme={theme} items={items} />
+            ))}
           </div>
         </div>
 
