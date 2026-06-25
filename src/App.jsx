@@ -519,7 +519,7 @@ export default function Portfolio() {
               <div className="hero-divider" />
               <div className="socials">
                 {[
-                  { label: "github",   href: "https://github.com/a-chill/",       Icon: GithubIcon },
+                  { label: "github",   href: "https://github.com/acheachi/",       Icon: GithubIcon },
                   { label: "linkedin", href: "https://linkedin.com/in/john-achilles-colon-52491922b/",  Icon: LinkedinIcon },
                   { label: "email",    href: "mailto:colon.johnachillesv11d@gmail.com",  Icon: EmailIcon },
                 ].map(({ label, href, Icon }) => (
@@ -634,7 +634,7 @@ export default function Portfolio() {
               © {new Date().getFullYear()} John Achilles Colon · React + Vite · GitHub Pages
             </div>
             <div className="footer-links">
-              <a href="https://github.com/a-chill/" target="_blank" rel="noreferrer">github</a>
+              <a href="https://github.com/acheachi/" target="_blank" rel="noreferrer">github</a>
               <a href="https://linkedin.com/in/john-achilles-colon-52491922b/" target="_blank" rel="noreferrer">linkedin</a>
               <a href="mailto:colon.johnachillesv11d@gmail.com">email</a>
             </div>
