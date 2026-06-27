@@ -54,6 +54,14 @@ const CERTIFICATIONS = [
     badgeImg: "https://images.credly.com/images/cef82b2e-970a-4318-8e59-c3e26b7f5c19/linkedin_thumb_image.png",
     verifyHref: "https://www.credly.com/badges/ba1e167c-ee8d-4360-986b-68cff73fb0d4/public_url",
   },
+  {
+    id: 6,
+    title: "Get Started with Microsoft Data Analytics",
+    issuer: "Microsoft Learn",
+    date: "2025",
+    badgeImg: "https://learn.microsoft.com/training/achievements/overview-data-analysis-power-bi-social.png",
+    verifyHref: "https://learn.microsoft.com/api/achievements/share/en-us/JohnAchillesColon-4134/H2ZCXFR8?sharingId=3E67AFE0DFA83DF3",
+  },
 ];
 
 const WEBINARS = {
@@ -172,12 +180,13 @@ function CertCard({ c, isLast }) {
         background: hovered ? "rgba(145,168,130,0.04)" : "transparent",
         transition: "background 0.3s ease",
         borderBottom: isLast ? "none" : "1px solid var(--div)",
+        textAlign: "left",
       }}
     >
       <img
         src={c.badgeImg}
         alt={c.title}
-        style={{ width: "52px", height: "52px", objectFit: "contain", flexShrink: 0 }}
+        style={{ width: "52px", height: "52px", objectFit: "contain", flexShrink: 0, borderRadius: "4px" }}
       />
       <div style={{ flex: 1 }}>
         <h4 style={{ fontFamily: "var(--display)", fontSize: "1rem", fontWeight: 400, color: "var(--tx)", marginBottom: "0.25rem", lineHeight: 1.3 }}>
@@ -200,7 +209,7 @@ function CertCard({ c, isLast }) {
 function WebinarGroup({ theme, items }) {
   return (
     <div style={{ marginBottom: "2rem" }}>
-      <div style={{ fontFamily: "var(--mono)", fontSize: "0.68rem", color: "var(--acc)", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "0.75rem", paddingBottom: "0.5rem", borderBottom: "1px solid var(--div)" }}>
+      <div style={{ fontFamily: "var(--mono)", fontSize: "0.68rem", color: "var(--acc)", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "0.75rem", paddingBottom: "0.5rem", borderBottom: "1px solid var(--div)", textAlign: "left" }}>
         {theme} <span style={{ color: "var(--tx3)" }}>({items.length})</span>
       </div>
       {items.map((w, i) => (
@@ -220,6 +229,7 @@ function WebinarRow({ w }) {
         display: "flex", justifyContent: "space-between", alignItems: "baseline",
         gap: "1rem", padding: "0.55rem 0",
         borderBottom: "1px solid rgba(145,168,130,0.06)",
+        textAlign: "left",
       }}
     >
       <div style={{ display: "flex", alignItems: "baseline", gap: "0.6rem", flex: 1 }}>
@@ -386,6 +396,13 @@ export default function Portfolio() {
           border-top: 1px solid var(--div);
         }
 
+        .section-centered {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
         .about-grid {
           display: grid;
           grid-template-columns: 1.2fr 1fr;
@@ -425,6 +442,12 @@ export default function Portfolio() {
         .certs-list {
           border: 1px solid var(--div);
           max-width: 640px;
+          width: 100%;
+        }
+
+        .webinars-wrap {
+          max-width: 700px;
+          width: 100%;
         }
 
         .resume-row {
@@ -491,6 +514,7 @@ export default function Portfolio() {
           .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
           .projects-grid { max-width: 100%; }
           .certs-list { max-width: 100%; }
+          .webinars-wrap { max-width: 100%; }
           .resume-row { flex-direction: column; align-items: flex-start; }
         }
       `}</style>
@@ -591,7 +615,7 @@ export default function Portfolio() {
         </div>
 
         {/* ── CERTIFICATIONS ─────────────────────────────────────── */}
-        <div id="certifications" className="section">
+        <div id="certifications" className="section section-centered">
           <div className="skills-heading" style={{ marginBottom: "1.5rem" }}>certifications &amp; badges</div>
           <div className="certs-list">
             {CERTIFICATIONS.map((c, i) => (
@@ -601,9 +625,9 @@ export default function Portfolio() {
         </div>
 
         {/* ── WEBINARS ───────────────────────────────────────────── */}
-        <div id="webinars" className="section">
+        <div id="webinars" className="section section-centered">
           <div className="skills-heading" style={{ marginBottom: "1.5rem" }}>webinars &amp; training</div>
-          <div style={{ maxWidth: "700px" }}>
+          <div className="webinars-wrap">
             {Object.entries(WEBINARS).map(([theme, items]) => (
               <WebinarGroup key={theme} theme={theme} items={items} />
             ))}
